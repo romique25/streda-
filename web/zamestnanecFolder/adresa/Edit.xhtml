@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditAdresaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditAdresaLabel_idAdresa}" for="idAdresa" />
+                    <h:inputText id="idAdresa" value="#{adresaController.selected.idAdresa}" title="#{bundle.EditAdresaTitle_idAdresa}" required="true" requiredMessage="#{bundle.EditAdresaRequiredMessage_idAdresa}"/>
+                    <h:outputLabel value="#{bundle.EditAdresaLabel_mesto}" for="mesto" />
+                    <h:inputText id="mesto" value="#{adresaController.selected.mesto}" title="#{bundle.EditAdresaTitle_mesto}" required="true" requiredMessage="#{bundle.EditAdresaRequiredMessage_mesto}"/>
+                    <h:outputLabel value="#{bundle.EditAdresaLabel_ulica}" for="ulica" />
+                    <h:inputText id="ulica" value="#{adresaController.selected.ulica}" title="#{bundle.EditAdresaTitle_ulica}" required="true" requiredMessage="#{bundle.EditAdresaRequiredMessage_ulica}"/>
+                    <h:outputLabel value="#{bundle.EditAdresaLabel_cisloUlica}" for="cisloUlica" />
+                    <h:inputText id="cisloUlica" value="#{adresaController.selected.cisloUlica}" title="#{bundle.EditAdresaTitle_cisloUlica}" required="true" requiredMessage="#{bundle.EditAdresaRequiredMessage_cisloUlica}"/>
+                    <h:outputLabel value="#{bundle.EditAdresaLabel_psc}" for="psc" />
+                    <h:inputText id="psc" value="#{adresaController.selected.psc}" title="#{bundle.EditAdresaTitle_psc}" />
+                </h:panelGrid>
+                <h:commandLink action="#{adresaController.update}" value="#{bundle.EditAdresaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditAdresaViewLink}"/>
+                <br />
+                <h:commandLink action="#{adresaController.prepareList}" value="#{bundle.EditAdresaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditAdresaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

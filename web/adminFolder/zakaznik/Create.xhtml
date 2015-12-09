@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateZakaznikTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateZakaznikLabel_idZakaznik}" for="idZakaznik" />
+                    <h:inputText id="idZakaznik" value="#{zakaznikController.selected.idZakaznik}" title="#{bundle.CreateZakaznikTitle_idZakaznik}" required="true" requiredMessage="#{bundle.CreateZakaznikRequiredMessage_idZakaznik}"/>
+                    <h:outputLabel value="#{bundle.CreateZakaznikLabel_meno}" for="meno" />
+                    <h:inputText id="meno" value="#{zakaznikController.selected.meno}" title="#{bundle.CreateZakaznikTitle_meno}" required="true" requiredMessage="#{bundle.CreateZakaznikRequiredMessage_meno}"/>
+                    <h:outputLabel value="#{bundle.CreateZakaznikLabel_priezvisko}" for="priezvisko" />
+                    <h:inputText id="priezvisko" value="#{zakaznikController.selected.priezvisko}" title="#{bundle.CreateZakaznikTitle_priezvisko}" required="true" requiredMessage="#{bundle.CreateZakaznikRequiredMessage_priezvisko}"/>
+                    <h:outputLabel value="#{bundle.CreateZakaznikLabel_vek}" for="vek" />
+                    <h:inputText id="vek" value="#{zakaznikController.selected.vek}" title="#{bundle.CreateZakaznikTitle_vek}" required="true" requiredMessage="#{bundle.CreateZakaznikRequiredMessage_vek}"/>
+                    <h:outputLabel value="#{bundle.CreateZakaznikLabel_cislo}" for="cislo" />
+                    <h:inputText id="cislo" value="#{zakaznikController.selected.cislo}" title="#{bundle.CreateZakaznikTitle_cislo}" required="true" requiredMessage="#{bundle.CreateZakaznikRequiredMessage_cislo}"/>
+                    <h:outputLabel value="#{bundle.CreateZakaznikLabel_login}" for="login" />
+                    <h:inputText id="login" value="#{zakaznikController.selected.login}" title="#{bundle.CreateZakaznikTitle_login}" required="true" requiredMessage="#{bundle.CreateZakaznikRequiredMessage_login}"/>
+                    <h:outputLabel value="#{bundle.CreateZakaznikLabel_heslo}" for="heslo" />
+                    <h:inputText id="heslo" value="#{zakaznikController.selected.heslo}" title="#{bundle.CreateZakaznikTitle_heslo}" required="true" requiredMessage="#{bundle.CreateZakaznikRequiredMessage_heslo}"/>
+                    <h:outputLabel value="#{bundle.CreateZakaznikLabel_idAdresa}" for="idAdresa" />
+                    <h:selectOneMenu id="idAdresa" value="#{zakaznikController.selected.idAdresa}" title="#{bundle.CreateZakaznikTitle_idAdresa}" >
+                        <f:selectItems value="#{adresaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateZakaznikLabel_idReferencie}" for="idReferencie" />
+                    <h:selectOneMenu id="idReferencie" value="#{zakaznikController.selected.idReferencie}" title="#{bundle.CreateZakaznikTitle_idReferencie}" >
+                        <f:selectItems value="#{referencieController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateZakaznikLabel_idPokuta}" for="idPokuta" />
+                    <h:selectOneMenu id="idPokuta" value="#{zakaznikController.selected.idPokuta}" title="#{bundle.CreateZakaznikTitle_idPokuta}" >
+                        <f:selectItems value="#{pokutaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{zakaznikController.create}" value="#{bundle.CreateZakaznikSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{zakaznikController.prepareList}" value="#{bundle.CreateZakaznikShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateZakaznikIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

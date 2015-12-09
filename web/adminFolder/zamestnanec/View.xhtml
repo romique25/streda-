@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewZamestnanecTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewZamestnanecLabel_idZamestnanec}"/>
+                    <h:outputText value="#{zamestnanecController.selected.idZamestnanec}" title="#{bundle.ViewZamestnanecTitle_idZamestnanec}"/>
+                    <h:outputText value="#{bundle.ViewZamestnanecLabel_meno}"/>
+                    <h:outputText value="#{zamestnanecController.selected.meno}" title="#{bundle.ViewZamestnanecTitle_meno}"/>
+                    <h:outputText value="#{bundle.ViewZamestnanecLabel_priezvisko}"/>
+                    <h:outputText value="#{zamestnanecController.selected.priezvisko}" title="#{bundle.ViewZamestnanecTitle_priezvisko}"/>
+                    <h:outputText value="#{bundle.ViewZamestnanecLabel_vek}"/>
+                    <h:outputText value="#{zamestnanecController.selected.vek}" title="#{bundle.ViewZamestnanecTitle_vek}"/>
+                    <h:outputText value="#{bundle.ViewZamestnanecLabel_cislo}"/>
+                    <h:outputText value="#{zamestnanecController.selected.cislo}" title="#{bundle.ViewZamestnanecTitle_cislo}"/>
+                    <h:outputText value="#{bundle.ViewZamestnanecLabel_login}"/>
+                    <h:outputText value="#{zamestnanecController.selected.login}" title="#{bundle.ViewZamestnanecTitle_login}"/>
+                    <h:outputText value="#{bundle.ViewZamestnanecLabel_heslo}"/>
+                    <h:outputText value="#{zamestnanecController.selected.heslo}" title="#{bundle.ViewZamestnanecTitle_heslo}"/>
+                    <h:outputText value="#{bundle.ViewZamestnanecLabel_idAdresa}"/>
+                    <h:outputText value="#{zamestnanecController.selected.idAdresa}" title="#{bundle.ViewZamestnanecTitle_idAdresa}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{zamestnanecController.destroyAndView}" value="#{bundle.ViewZamestnanecDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewZamestnanecEditLink}"/>
+                <br />
+                <h:commandLink action="#{zamestnanecController.prepareCreate}" value="#{bundle.ViewZamestnanecCreateLink}" />
+                <br />
+                <h:commandLink action="#{zamestnanecController.prepareList}" value="#{bundle.ViewZamestnanecShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewZamestnanecIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

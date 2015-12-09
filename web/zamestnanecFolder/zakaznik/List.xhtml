@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListZakaznikTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListZakaznikEmpty}" rendered="#{zakaznikController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{zakaznikController.items.rowCount > 0}">
+                    <h:outputText value="#{zakaznikController.pagination.pageFirstItem + 1}..#{zakaznikController.pagination.pageLastItem + 1}/#{zakaznikController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{zakaznikController.previous}" value="#{bundle.Previous} #{zakaznikController.pagination.pageSize}" rendered="#{zakaznikController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{zakaznikController.next}" value="#{bundle.Next} #{zakaznikController.pagination.pageSize}" rendered="#{zakaznikController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{zakaznikController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListZakaznikTitle_idZakaznik}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idZakaznik}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListZakaznikTitle_meno}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.meno}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListZakaznikTitle_priezvisko}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.priezvisko}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListZakaznikTitle_vek}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.vek}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListZakaznikTitle_cislo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cislo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListZakaznikTitle_login}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.login}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListZakaznikTitle_heslo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.heslo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListZakaznikTitle_idAdresa}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idAdresa}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListZakaznikTitle_idReferencie}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idReferencie}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListZakaznikTitle_idPokuta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idPokuta}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{zakaznikController.prepareView}" value="#{bundle.ListZakaznikViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{zakaznikController.prepareEdit}" value="#{bundle.ListZakaznikEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{zakaznikController.destroy}" value="#{bundle.ListZakaznikDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{zakaznikController.prepareCreate}" value="#{bundle.ListZakaznikCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListZakaznikIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

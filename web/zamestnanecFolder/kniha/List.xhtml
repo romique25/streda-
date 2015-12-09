@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListKnihaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListKnihaEmpty}" rendered="#{knihaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{knihaController.items.rowCount > 0}">
+                    <h:outputText value="#{knihaController.pagination.pageFirstItem + 1}..#{knihaController.pagination.pageLastItem + 1}/#{knihaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{knihaController.previous}" value="#{bundle.Previous} #{knihaController.pagination.pageSize}" rendered="#{knihaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{knihaController.next}" value="#{bundle.Next} #{knihaController.pagination.pageSize}" rendered="#{knihaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{knihaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListKnihaTitle_idKniha}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idKniha}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListKnihaTitle_nazov}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nazov}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListKnihaTitle_autor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.autor}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListKnihaTitle_rokVydania}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.rokVydania}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListKnihaTitle_vydavatelstvo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.vydavatelstvo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListKnihaTitle_stav}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.stav}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{knihaController.prepareView}" value="#{bundle.ListKnihaViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{knihaController.prepareEdit}" value="#{bundle.ListKnihaEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{knihaController.destroy}" value="#{bundle.ListKnihaDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{knihaController.prepareCreate}" value="#{bundle.ListKnihaCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListKnihaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

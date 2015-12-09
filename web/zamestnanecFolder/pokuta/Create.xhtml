@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePokutaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreatePokutaLabel_idPokuta}" for="idPokuta" />
+                    <h:inputText id="idPokuta" value="#{pokutaController.selected.idPokuta}" title="#{bundle.CreatePokutaTitle_idPokuta}" required="true" requiredMessage="#{bundle.CreatePokutaRequiredMessage_idPokuta}"/>
+                    <h:outputLabel value="#{bundle.CreatePokutaLabel_pozicanie}" for="pozicanie" />
+                    <h:inputText id="pozicanie" value="#{pokutaController.selected.pozicanie}" title="#{bundle.CreatePokutaTitle_pozicanie}" required="true" requiredMessage="#{bundle.CreatePokutaRequiredMessage_pozicanie}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreatePokutaLabel_vratenie}" for="vratenie" />
+                    <h:inputText id="vratenie" value="#{pokutaController.selected.vratenie}" title="#{bundle.CreatePokutaTitle_vratenie}" required="true" requiredMessage="#{bundle.CreatePokutaRequiredMessage_vratenie}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreatePokutaLabel_cena}" for="cena" />
+                    <h:inputText id="cena" value="#{pokutaController.selected.cena}" title="#{bundle.CreatePokutaTitle_cena}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{pokutaController.create}" value="#{bundle.CreatePokutaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{pokutaController.prepareList}" value="#{bundle.CreatePokutaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreatePokutaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

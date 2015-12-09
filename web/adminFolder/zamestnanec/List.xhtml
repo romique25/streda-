@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListZamestnanecTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListZamestnanecEmpty}" rendered="#{zamestnanecController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{zamestnanecController.items.rowCount > 0}">
+                    <h:outputText value="#{zamestnanecController.pagination.pageFirstItem + 1}..#{zamestnanecController.pagination.pageLastItem + 1}/#{zamestnanecController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{zamestnanecController.previous}" value="#{bundle.Previous} #{zamestnanecController.pagination.pageSize}" rendered="#{zamestnanecController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{zamestnanecController.next}" value="#{bundle.Next} #{zamestnanecController.pagination.pageSize}" rendered="#{zamestnanecController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{zamestnanecController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListZamestnanecTitle_idZamestnanec}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idZamestnanec}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListZamestnanecTitle_meno}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.meno}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListZamestnanecTitle_priezvisko}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.priezvisko}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListZamestnanecTitle_vek}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.vek}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListZamestnanecTitle_cislo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cislo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListZamestnanecTitle_login}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.login}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListZamestnanecTitle_heslo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.heslo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListZamestnanecTitle_idAdresa}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idAdresa}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{zamestnanecController.prepareView}" value="#{bundle.ListZamestnanecViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{zamestnanecController.prepareEdit}" value="#{bundle.ListZamestnanecEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{zamestnanecController.destroy}" value="#{bundle.ListZamestnanecDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{zamestnanecController.prepareCreate}" value="#{bundle.ListZamestnanecCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListZamestnanecIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditZamestnanecTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditZamestnanecLabel_idZamestnanec}" for="idZamestnanec" />
+                    <h:inputText id="idZamestnanec" value="#{zamestnanecController.selected.idZamestnanec}" title="#{bundle.EditZamestnanecTitle_idZamestnanec}" required="true" requiredMessage="#{bundle.EditZamestnanecRequiredMessage_idZamestnanec}"/>
+                    <h:outputLabel value="#{bundle.EditZamestnanecLabel_meno}" for="meno" />
+                    <h:inputText id="meno" value="#{zamestnanecController.selected.meno}" title="#{bundle.EditZamestnanecTitle_meno}" required="true" requiredMessage="#{bundle.EditZamestnanecRequiredMessage_meno}"/>
+                    <h:outputLabel value="#{bundle.EditZamestnanecLabel_priezvisko}" for="priezvisko" />
+                    <h:inputText id="priezvisko" value="#{zamestnanecController.selected.priezvisko}" title="#{bundle.EditZamestnanecTitle_priezvisko}" required="true" requiredMessage="#{bundle.EditZamestnanecRequiredMessage_priezvisko}"/>
+                    <h:outputLabel value="#{bundle.EditZamestnanecLabel_vek}" for="vek" />
+                    <h:inputText id="vek" value="#{zamestnanecController.selected.vek}" title="#{bundle.EditZamestnanecTitle_vek}" required="true" requiredMessage="#{bundle.EditZamestnanecRequiredMessage_vek}"/>
+                    <h:outputLabel value="#{bundle.EditZamestnanecLabel_cislo}" for="cislo" />
+                    <h:inputText id="cislo" value="#{zamestnanecController.selected.cislo}" title="#{bundle.EditZamestnanecTitle_cislo}" required="true" requiredMessage="#{bundle.EditZamestnanecRequiredMessage_cislo}"/>
+                    <h:outputLabel value="#{bundle.EditZamestnanecLabel_login}" for="login" />
+                    <h:inputText id="login" value="#{zamestnanecController.selected.login}" title="#{bundle.EditZamestnanecTitle_login}" required="true" requiredMessage="#{bundle.EditZamestnanecRequiredMessage_login}"/>
+                    <h:outputLabel value="#{bundle.EditZamestnanecLabel_heslo}" for="heslo" />
+                    <h:inputText id="heslo" value="#{zamestnanecController.selected.heslo}" title="#{bundle.EditZamestnanecTitle_heslo}" required="true" requiredMessage="#{bundle.EditZamestnanecRequiredMessage_heslo}"/>
+                    <h:outputLabel value="#{bundle.EditZamestnanecLabel_idAdresa}" for="idAdresa" />
+                    <h:selectOneMenu id="idAdresa" value="#{zamestnanecController.selected.idAdresa}" title="#{bundle.EditZamestnanecTitle_idAdresa}" >
+                        <f:selectItems value="#{adresaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{zamestnanecController.update}" value="#{bundle.EditZamestnanecSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditZamestnanecViewLink}"/>
+                <br />
+                <h:commandLink action="#{zamestnanecController.prepareList}" value="#{bundle.EditZamestnanecShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditZamestnanecIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

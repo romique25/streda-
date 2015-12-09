@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewPokutaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewPokutaLabel_idPokuta}"/>
+                    <h:outputText value="#{pokutaController.selected.idPokuta}" title="#{bundle.ViewPokutaTitle_idPokuta}"/>
+                    <h:outputText value="#{bundle.ViewPokutaLabel_pozicanie}"/>
+                    <h:outputText value="#{pokutaController.selected.pozicanie}" title="#{bundle.ViewPokutaTitle_pozicanie}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewPokutaLabel_vratenie}"/>
+                    <h:outputText value="#{pokutaController.selected.vratenie}" title="#{bundle.ViewPokutaTitle_vratenie}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewPokutaLabel_cena}"/>
+                    <h:outputText value="#{pokutaController.selected.cena}" title="#{bundle.ViewPokutaTitle_cena}"/>
+                </h:panelGrid>
+                <br />
+                
+                <h:commandLink action="#{pokutaController.prepareList}" value="#{bundle.ViewPokutaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewPokutaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

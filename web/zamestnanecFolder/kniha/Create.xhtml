@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateKnihaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateKnihaLabel_idKniha}" for="idKniha" />
+                    <h:inputText id="idKniha" value="#{knihaController.selected.idKniha}" title="#{bundle.CreateKnihaTitle_idKniha}" required="true" requiredMessage="#{bundle.CreateKnihaRequiredMessage_idKniha}"/>
+                    <h:outputLabel value="#{bundle.CreateKnihaLabel_nazov}" for="nazov" />
+                    <h:inputText id="nazov" value="#{knihaController.selected.nazov}" title="#{bundle.CreateKnihaTitle_nazov}" required="true" requiredMessage="#{bundle.CreateKnihaRequiredMessage_nazov}"/>
+                    <h:outputLabel value="#{bundle.CreateKnihaLabel_autor}" for="autor" />
+                    <h:inputText id="autor" value="#{knihaController.selected.autor}" title="#{bundle.CreateKnihaTitle_autor}" required="true" requiredMessage="#{bundle.CreateKnihaRequiredMessage_autor}"/>
+                    <h:outputLabel value="#{bundle.CreateKnihaLabel_rokVydania}" for="rokVydania" />
+                    <h:inputText id="rokVydania" value="#{knihaController.selected.rokVydania}" title="#{bundle.CreateKnihaTitle_rokVydania}" required="true" requiredMessage="#{bundle.CreateKnihaRequiredMessage_rokVydania}"/>
+                    <h:outputLabel value="#{bundle.CreateKnihaLabel_vydavatelstvo}" for="vydavatelstvo" />
+                    <h:inputText id="vydavatelstvo" value="#{knihaController.selected.vydavatelstvo}" title="#{bundle.CreateKnihaTitle_vydavatelstvo}" />
+                    <h:outputLabel value="#{bundle.CreateKnihaLabel_stav}" for="stav" />
+                    <h:inputText id="stav" value="#{knihaController.selected.stav}" title="#{bundle.CreateKnihaTitle_stav}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{knihaController.create}" value="#{bundle.CreateKnihaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{knihaController.prepareList}" value="#{bundle.CreateKnihaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateKnihaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

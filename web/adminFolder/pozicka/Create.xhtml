@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePozickaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreatePozickaLabel_popis}" for="popis" />
+                    <h:inputText id="popis" value="#{pozickaController.selected.popis}" title="#{bundle.CreatePozickaTitle_popis}" />
+                    <h:outputLabel value="#{bundle.CreatePozickaLabel_zakaznik}" for="zakaznik" />
+                    <h:selectOneMenu id="zakaznik" value="#{pozickaController.selected.zakaznik}" title="#{bundle.CreatePozickaTitle_zakaznik}" required="true" requiredMessage="#{bundle.CreatePozickaRequiredMessage_zakaznik}">
+                        <f:selectItems value="#{zakaznikController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreatePozickaLabel_kniha}" for="kniha" />
+                    <h:selectOneMenu id="kniha" value="#{pozickaController.selected.kniha}" title="#{bundle.CreatePozickaTitle_kniha}" required="true" requiredMessage="#{bundle.CreatePozickaRequiredMessage_kniha}">
+                        <f:selectItems value="#{knihaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{pozickaController.create}" value="#{bundle.CreatePozickaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{pozickaController.prepareList}" value="#{bundle.CreatePozickaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreatePozickaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

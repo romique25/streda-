@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditKnihaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditKnihaLabel_idKniha}" for="idKniha" />
+                    <h:inputText id="idKniha" value="#{knihaController.selected.idKniha}" title="#{bundle.EditKnihaTitle_idKniha}" required="true" requiredMessage="#{bundle.EditKnihaRequiredMessage_idKniha}"/>
+                    <h:outputLabel value="#{bundle.EditKnihaLabel_nazov}" for="nazov" />
+                    <h:inputText id="nazov" value="#{knihaController.selected.nazov}" title="#{bundle.EditKnihaTitle_nazov}" required="true" requiredMessage="#{bundle.EditKnihaRequiredMessage_nazov}"/>
+                    <h:outputLabel value="#{bundle.EditKnihaLabel_autor}" for="autor" />
+                    <h:inputText id="autor" value="#{knihaController.selected.autor}" title="#{bundle.EditKnihaTitle_autor}" required="true" requiredMessage="#{bundle.EditKnihaRequiredMessage_autor}"/>
+                    <h:outputLabel value="#{bundle.EditKnihaLabel_rokVydania}" for="rokVydania" />
+                    <h:inputText id="rokVydania" value="#{knihaController.selected.rokVydania}" title="#{bundle.EditKnihaTitle_rokVydania}" required="true" requiredMessage="#{bundle.EditKnihaRequiredMessage_rokVydania}"/>
+                    <h:outputLabel value="#{bundle.EditKnihaLabel_vydavatelstvo}" for="vydavatelstvo" />
+                    <h:inputText id="vydavatelstvo" value="#{knihaController.selected.vydavatelstvo}" title="#{bundle.EditKnihaTitle_vydavatelstvo}" />
+                    <h:outputLabel value="#{bundle.EditKnihaLabel_stav}" for="stav" />
+                    <h:inputText id="stav" value="#{knihaController.selected.stav}" title="#{bundle.EditKnihaTitle_stav}" />
+                </h:panelGrid>
+                <h:commandLink action="#{knihaController.update}" value="#{bundle.EditKnihaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditKnihaViewLink}"/>
+                <br />
+                <h:commandLink action="#{knihaController.prepareList}" value="#{bundle.EditKnihaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditKnihaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
